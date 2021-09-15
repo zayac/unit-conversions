@@ -1,0 +1,33 @@
+name: Circle
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+    - name: Build, Run, Test
+      run: |
+        cd circle
+        cat tests/list | while read file || [[ -n $file ]]; do
+          echo "🚀 Running the test '$file'."
+          IN_FILE=tests/$file.in
+          WANT_FILE=tests/$file.out
+          GOT_FILE=tests/$file.got
+          cat $IN_FILE | go run . > $GOT_FILE
+          if ! diff -q $WANT_FILE $GOT_FILE &>/dev/null; then
+            echo "🤔 Diff found for test '$file'" >> diff.txt
+            diff $WANT_FILE $GOT_FILE >> diff.txt | true
+            echo >> diff.txt
+          fi;
+        done
+        if test -f diff.txt; then
+          echo "❌ Some tests failed."
+          cat diff.txt
+          exit 1
+        fi
+        echo "✅ All tests passed."
