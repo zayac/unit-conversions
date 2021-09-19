@@ -11,8 +11,6 @@ the repository. The tests for a correct program must pass.
 1. Use the following functions:
 
    * [fmt.Println](https://pkg.go.dev/fmt#Println)
-   * [fmt.Print](https://pkg.go.dev/fmt#Print)
-   * [fmt.Printf](https://pkg.go.dev/fmt#Printf)
    * [fmt.Scan](https://pkg.go.dev/fmt#Scan)
 
 1. While printing `float64` values, use formatting with 2 digits precision (see [example](https://play.golang.org/p/m7miCyzIaie)).
@@ -47,8 +45,10 @@ Example:
 
 ```
 The program prints the perimeter and the square of a rectangle given the rectangle sides.
-Enter the length and the bredth of the rectangle: 4 5.5
-Perimeter: 19.00, square: 22.00
+Enter the length and the bredth of the rectangle:
+4 5.5
+Perimeter: 19
+Square: 22
 ```
 
 ### Circle (2 points)
@@ -60,8 +60,10 @@ Example:
 
 ```
 The program prints the perimeter and the square of a circle given the radius.
-Enter the radius: 1
-Perimeter: 6.28, square: 3.14
+Enter the radius:
+8
+Perimeter: 50.26548245743669
+Square: 201.06192982974676
 ```
 
 You will need to use [math.Pi](https://pkg.go.dev/math#pkg-constants) constant to represent `π` value.
@@ -74,8 +76,9 @@ Example:
 
 ```
 The program converts km/h to m/s.
-Enter the speed in km/h: 100
-The speed in m/s: 27.78
+Enter the speed in km/h:
+100
+The speed in m/s: 27.77777777777778
 ```
 
 ### Temperature (2 points)
@@ -87,6 +90,7 @@ Example:
 
 ```
 The program converts temperature from Celsius to Fahrenheit.
-Enter the temperature in Celsius: 36.6
-The temperature in Fahrenheit: 97.88
+Enter the temperature in Celsius:
+100
+The temperature in Fahrenheit: 212
 ```
